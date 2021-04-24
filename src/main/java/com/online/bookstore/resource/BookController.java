@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class BookController {
 
     @Autowired
@@ -43,7 +44,6 @@ public class BookController {
     public String updateBook(@RequestBody List<Long> ids) throws BookStoreException {
         return bookService.deleteBook(ids);
     }
-
 
     @GetMapping(value = "/checkout", produces = {MediaType.TEXT_PLAIN_VALUE})
     public String checkout(@RequestBody Checkout checkoutBook) {
