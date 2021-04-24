@@ -5,7 +5,6 @@ import com.online.bookstore.model.BookStoreResponse;
 import com.online.bookstore.model.Checkout;
 import com.online.bookstore.service.BookService;
 import com.online.bookstore.exception.BookStoreException;
-import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
