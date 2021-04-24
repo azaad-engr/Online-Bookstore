@@ -64,7 +64,11 @@ public class BookServiceImpl implements BookService {
         String result = "BOOK SUCCESSFULLY DELETED";
         if (ids.size() > 0) {
             List<Book> books = (List<Book>) bookRepository.findAllById(ids);
-            bookRepository.deleteAll(books);
+            if(CollectionUtils.isNotEmpty(books)){
+                bookRepository.deleteAll(books);
+            }else{
+                throw new BookStoreException("Book Ids are not valid");
+            }
         } else {
             throw new BookStoreException("Book Ids are not valid");
         }
@@ -72,7 +76,7 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Long getCheckoutPrice(Checkout checkout) {
+    public Long getCheckoutPrice(Checkout checkout) throws BookStoreException{
         Long totalAmount = 0l;
         if (checkout.getIds().size() > 0) {
             Map<String, String> resultMap = null;

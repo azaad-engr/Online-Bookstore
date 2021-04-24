@@ -18,5 +18,5 @@ public interface BookService {
 
     String deleteBook(List<Long> ids) throws BookStoreException;
 
-    Long getCheckoutPrice(Checkout checkout);
+    Long getCheckoutPrice(Checkout checkout) throws BookStoreException;
 }

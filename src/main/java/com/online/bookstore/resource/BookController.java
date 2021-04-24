@@ -44,7 +44,8 @@ public class BookController {
     }
 
     @PutMapping(value = "/updateBookById/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<BookStoreResponse> updateBook(@PathVariable("id") Long id, @RequestBody Book book) throws BookStoreException {
+    public ResponseEntity<BookStoreResponse> updateBook(@PathVariable("id") Long id,
+                                                        @Valid @RequestBody Book book) throws BookStoreException {
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.updateBook(id, book));
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
@@ -57,9 +58,11 @@ public class BookController {
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/checkout", produces = {MediaType.TEXT_PLAIN_VALUE})
-    public String checkout(@RequestBody Checkout checkoutBook) {
+    @GetMapping(value = "/checkout", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<BookStoreResponse> checkout(@Valid @RequestBody Checkout checkoutBook) {
         Long totalAmount = bookService.getCheckoutPrice(checkoutBook);
-        return "BOOKS CHECKED OUT - Total Payable is AED" + totalAmount;
+        BookStoreResponse bookStoreResponse = new BookStoreResponse();
+        bookStoreResponse.setResponse("BOOKS CHECKED OUT - Total Payable is AED " + totalAmount);
+        return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
     }
 }
