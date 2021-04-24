@@ -1,6 +1,6 @@
-package com.bookstore.bookstore.model;
+package com.online.bookstore.model;
 
-import com.bookstore.bookstore.utils.BookTypeEnum;
+import com.online.bookstore.utils.BookTypeEnum;
 import lombok.Data;
 
 import javax.persistence.*;

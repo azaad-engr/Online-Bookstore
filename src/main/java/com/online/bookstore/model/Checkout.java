@@ -1,4 +1,4 @@
-package com.bookstore.bookstore.model;
+package com.online.bookstore.model;
 
 import lombok.Data;
 import lombok.Getter;

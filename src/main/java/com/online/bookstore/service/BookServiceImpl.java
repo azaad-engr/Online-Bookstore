@@ -1,13 +1,13 @@
-package com.bookstore.bookstore.service;
+package com.online.bookstore.service;
 
-import com.bookstore.bookstore.exception.BookStoreException;
-import com.bookstore.bookstore.model.Book;
-import com.bookstore.bookstore.model.Checkout;
-import com.bookstore.bookstore.model.PromoCode;
-import com.bookstore.bookstore.model.PromoCodeDetails;
-import com.bookstore.bookstore.repository.BookRepository;
-import com.bookstore.bookstore.repository.PromoCodesRepository;
-import com.bookstore.bookstore.utils.BookTypeEnum;
+import com.online.bookstore.exception.BookStoreException;
+import com.online.bookstore.model.Book;
+import com.online.bookstore.model.Checkout;
+import com.online.bookstore.model.PromoCode;
+import com.online.bookstore.model.PromoCodeDetails;
+import com.online.bookstore.repository.BookRepository;
+import com.online.bookstore.repository.PromoCodesRepository;
+import com.online.bookstore.utils.BookTypeEnum;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;

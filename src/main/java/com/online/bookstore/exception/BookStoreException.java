@@ -1,4 +1,4 @@
-package com.bookstore.bookstore.exception;
+package com.online.bookstore.exception;
 
 public class BookStoreException extends Exception{
 

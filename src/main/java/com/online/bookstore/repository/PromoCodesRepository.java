@@ -1,4 +1,4 @@
-package com.bookstore.bookstore.repository;
+package com.online.bookstore.repository;
 
 import com.bookstore.bookstore.model.PromoCode;
 import org.springframework.data.jpa.repository.JpaRepository;

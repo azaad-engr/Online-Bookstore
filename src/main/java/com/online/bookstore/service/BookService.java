@@ -1,8 +1,8 @@
-package com.bookstore.bookstore.service;
+package com.online.bookstore.service;
 
-import com.bookstore.bookstore.exception.BookStoreException;
-import com.bookstore.bookstore.model.Book;
-import com.bookstore.bookstore.model.Checkout;
+import com.online.bookstore.exception.BookStoreException;
+import com.online.bookstore.model.Book;
+import com.online.bookstore.model.Checkout;
 
 import java.util.List;
 

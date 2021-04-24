@@ -1,4 +1,4 @@
-package com.bookstore.bookstore.utils;
+package com.online.bookstore.utils;
 
 public enum BookTypeEnum {
     FICTION,COMIC,KIDS

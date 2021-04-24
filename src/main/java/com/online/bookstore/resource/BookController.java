@@ -1,9 +1,9 @@
-package com.bookstore.bookstore.resource;
+package com.online.bookstore.resource;
 
-import com.bookstore.bookstore.model.Book;
-import com.bookstore.bookstore.model.Checkout;
-import com.bookstore.bookstore.service.BookService;
-import com.bookstore.bookstore.exception.BookStoreException;
+import com.online.bookstore.model.Book;
+import com.online.bookstore.model.Checkout;
+import com.online.bookstore.service.BookService;
+import com.online.bookstore.exception.BookStoreException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
