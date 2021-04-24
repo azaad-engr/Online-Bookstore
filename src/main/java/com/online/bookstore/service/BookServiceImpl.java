@@ -1,5 +1,6 @@
 package com.online.bookstore.service;
 
+import com.online.bookstore.exception.BookNotFoundException;
 import com.online.bookstore.exception.BookStoreException;
 import com.online.bookstore.model.Book;
 import com.online.bookstore.model.Checkout;
@@ -25,7 +26,7 @@ public class BookServiceImpl implements BookService {
     private PromoCodesRepository promoCodesRepository;
 
     @Override
-    public String addBook(Book book) {
+    public String addBook(Book book) throws BookStoreException{
         bookRepository.save(book);
         return "BOOK SUCCESSFULLY ADDED";
     }
@@ -33,14 +34,13 @@ public class BookServiceImpl implements BookService {
     @Override
     public String updateBook(Long id, Book book) throws BookStoreException {
         String result = "BOOK SUCCESSFULLY UPDATED";
-        Book bookEntity = bookRepository.getBookById(id);
+        Book bookEntity = bookRepository.findById(id).orElseThrow(()->new BookNotFoundException(id));
         if (bookEntity != null) {
             bookEntity.setAuthor(book.getAuthor());
             bookEntity.setDescription(book.getDescription());
             bookEntity.setIsbn(book.getIsbn());
             bookEntity.setName(book.getName());
             bookEntity.setPrice(book.getPrice());
-            //bookEntity.setPromoCode(book.getPromoCode());
             bookEntity.setType(book.getType());
             bookRepository.save(bookEntity);
         } else {
@@ -51,19 +51,19 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+        return (List<Book>) bookRepository.findAll();
     }
 
     @Override
     public Book getBookById(Long id) {
-        return bookRepository.getBookById(id);
+        return bookRepository.findById(id).orElseThrow(()->new BookNotFoundException(id));
     }
 
     @Override
     public String deleteBook(List<Long> ids) throws BookStoreException {
         String result = "BOOK SUCCESSFULLY DELETED";
         if (ids.size() > 0) {
-            List<Book> books = bookRepository.findAllById(ids);
+            List<Book> books = (List<Book>) bookRepository.findAllById(ids);
             bookRepository.deleteAll(books);
         } else {
             throw new BookStoreException("Book Ids are not valid");
@@ -87,7 +87,7 @@ public class BookServiceImpl implements BookService {
                 }
             }
 
-            List<Book> checkoutBooks = bookRepository.findAllById(checkout.getIds());
+            List<Book> checkoutBooks = (List<Book>) bookRepository.findAllById(checkout.getIds());
             Map<BookTypeEnum, List<Book>> groupBookByType =
                     checkoutBooks.stream().collect(Collectors.groupingBy(book -> book.getType()));
 

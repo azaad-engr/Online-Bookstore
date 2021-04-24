@@ -8,11 +8,10 @@ CREATE TABLE BOOK (
   type VARCHAR(50) NOT NULL,
   price INT NOT NULL,
   isbn VARCHAR(250) NOT NULL
-  --  ,promocode VARCHAR(150)
 );
 
-INSERT INTO BOOK (id, name, description, author, type, price, isbn) VALUES
-  (1, 'book1', 'book1', 'KPT', 1, 100, 'isbn-1');
+--INSERT INTO BOOK (id, name, description, author, type, price, isbn) VALUES
+--  (1, 'book1', 'book1', 'KPT', 1, 100, 'isbn-1');
 
 DROP TABLE IF EXISTS PROMOCODE;
 

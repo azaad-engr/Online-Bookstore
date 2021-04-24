@@ -1,6 +1,6 @@
 package com.online.bookstore.exception;
 
-public class BookStoreException extends Exception{
+public class BookStoreException extends RuntimeException{
 
     public BookStoreException(String message){
         super(message);
