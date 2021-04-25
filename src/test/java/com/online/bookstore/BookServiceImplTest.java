@@ -64,8 +64,6 @@ class BookServiceImplTest {
 
     @Test
     void updateBook() {
-//        Product existingProduct = new Product(1, "Product", "Description", 10, 1);
-//        Product updatedProduct = new Product(1, "New Name", "Description", 20, 2);
         //Given
         Book existingBook = new Book();
         existingBook.setName("abc");
@@ -85,9 +83,11 @@ class BookServiceImplTest {
         updatedBook.setPrice(120l);
         updatedBook.setId(1l);
 
+        //When
         doReturn(Optional.of(existingBook)).when(bookRepository).findById(1l);
         doReturn(updatedBook).when(bookRepository).save(updatedBook);
 
+        //Then
         String updateBook = bookService.updateBook(existingBook.getId(), existingBook);
 
         assertEquals("BOOK SUCCESSFULLY UPDATED", updateBook);
