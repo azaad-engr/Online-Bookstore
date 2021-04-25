@@ -2,12 +2,14 @@ package com.online.bookstore.model;
 
 import com.online.bookstore.utils.BookTypeEnum;
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 
+@ToString
 @Entity
 @Table(name = "BOOK")
 @Data
@@ -38,4 +40,6 @@ public class Book {
     @NotBlank
     @Column(name = "isbn")
     String isbn;
+
+
 }

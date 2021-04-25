@@ -9,6 +9,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +27,8 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    Logger logger = LoggerFactory.getLogger(BookController.class);
+
     @Operation(summary = "This API is to add the book to the Online Book Store")
     @ApiResponses(value = {
             @ApiResponse(
@@ -40,6 +44,7 @@ public class BookController {
     })
     @PostMapping(value = "/addBook", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BookStoreResponse> addBook(@Valid @RequestBody Book book) {
+        logger.info("Add Book {}", book.toString());
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.addBook(book));
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
@@ -60,6 +65,7 @@ public class BookController {
     })
     @GetMapping(value = "/getBookByid/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BookStoreResponse> getBookByid(@PathVariable("id") Long id) {
+        logger.info("Get Book {}", id);
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.getBookById(id));
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
@@ -75,6 +81,7 @@ public class BookController {
     })
     @GetMapping(value = "/getAllBooks", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BookStoreResponse> getAllBooks() {
+        logger.info("Get All Books");
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.getAllBooks());
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
@@ -101,6 +108,7 @@ public class BookController {
     @PutMapping(value = "/updateBookById/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BookStoreResponse> updateBook(@PathVariable("id") Long id,
                                                         @Valid @RequestBody Book book) throws BookStoreException {
+        logger.info("Update Book id {} {}", id, book.toString());
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.updateBook(id, book));
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
@@ -121,6 +129,7 @@ public class BookController {
     })
     @DeleteMapping(value = "/deleteBookById", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BookStoreResponse> deleteBooks(@RequestBody List<Long> ids) {
+        logger.info("Delete Book ids {}", ids);
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.deleteBook(ids));
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
@@ -137,6 +146,7 @@ public class BookController {
     })
     @GetMapping(value = "/checkout", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<BookStoreResponse> checkout(@Valid @RequestBody Checkout checkoutBook) {
+        logger.info("Checkout Books {}", checkoutBook.toString());
         Long totalAmount = bookService.getCheckoutPrice(checkoutBook);
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse("BOOKS CHECKED OUT - Total Payable is AED " + totalAmount);
