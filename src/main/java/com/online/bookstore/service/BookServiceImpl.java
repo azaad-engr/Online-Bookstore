@@ -87,7 +87,7 @@ public class BookServiceImpl implements BookService {
                     resultMap =
                             applicableDiscounts.get(0).getPromoCodeDetailsList().stream().collect(Collectors.toMap(
                                     PromoCodeDetails::getType, PromoCodeDetails::getDiscountpct));
-                    System.out.println(resultMap);
+                    //System.out.println(resultMap);
                 }
             }
 
@@ -104,7 +104,7 @@ public class BookServiceImpl implements BookService {
                     String applicablePct = resultMap.get(entry.getKey().name());
                     int ratePct = 100 - Integer.valueOf(applicablePct);
                     long finalAmt = (ratePct * sum) / 100;
-                    System.out.println(applicablePct + "---" + sum + "---" + finalAmt);
+                    //System.out.println(applicablePct + "---" + sum + "---" + finalAmt);
                     totalAmount += finalAmt;
                 } else {
                     totalAmount += sum;
