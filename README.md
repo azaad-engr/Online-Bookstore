@@ -42,6 +42,15 @@ cd Online-Bookstore
 mvn clean install
 java -jar target\bookstore-0.0.1-SNAPSHOT.jar com.online.bookstore.BookstoreApplication
 ```
+
+Using Docker [Build Pack](https://buildpacks.io/) support
+```sh
+cd Online-Bookstore
+mvn spring-boot:build-image
+docker run -it -p9099:8888 docker-bookstore:1.0.0
+```
+
+
 ## License
 
 Free to use :)
