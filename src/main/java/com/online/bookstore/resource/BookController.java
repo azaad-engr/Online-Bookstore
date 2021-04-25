@@ -51,7 +51,7 @@ public class BookController {
     }
 
     @DeleteMapping(value = "/deleteBookById", produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<BookStoreResponse> updateBook(@RequestBody List<Long> ids) {
+    public ResponseEntity<BookStoreResponse> deleteBooks(@RequestBody List<Long> ids) {
         BookStoreResponse bookStoreResponse = new BookStoreResponse();
         bookStoreResponse.setResponse(bookService.deleteBook(ids));
         return new ResponseEntity<>(bookStoreResponse, HttpStatus.OK);
