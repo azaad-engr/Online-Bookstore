@@ -16,6 +16,7 @@ Dillinger uses a number of open source projects to work properly:
 
 - [SpingBoot](https://spring.io/projects/spring-boot) - Springboot is used developing this application
 - [JDK 11](https://jdk.java.net/11/) - Used for Development bundled with [IntelliJ](https://www.jetbrains.com/idea/) IDE
+- [JDK Download Link](https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_windows-x64_bin.zip)
 - In memory DB is used for demonstration purposes.
 - Open API Configuration and Documentation is added which can be accessible using [URL](http://localhost:8080/swagger-ui.html) 
 - Test cases are added for MVC and service layer using mockMvc and mockito.
